@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LuxeHome · AI Realtor</title>
+<meta name="theme-color" content="#4f46e5">
+<link rel="icon" href="/favicon.ico" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<script>
+  // apply the saved theme before first paint (no flash)
+  (function () {
+    try {
+      var t = JSON.parse(localStorage.getItem("lh.theme"));
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="/static/app.css?v=3">
+</head>
+<body>
+<div id="app">
+  <aside class="side">
+    <div class="brand">
+      <div class="logo" id="logo"></div>
+      <div><div class="brand-name">LuxeHome</div><div class="brand-sub">AI Realtor · King County</div></div>
+    </div>
+    <nav id="side-nav" class="nav"></nav>
+    <button class="user-chip" id="user-chip-side" data-act="profile" aria-label="Your profile"></button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <h1 id="page-title">Your AI realtor</h1>
+      <div class="top-actions">
+        <button class="icon-btn" id="theme-btn" data-act="theme" aria-label="Toggle dark mode"></button>
+        <button class="user-chip mini" id="user-chip-top" data-act="profile" aria-label="Your profile"></button>
+      </div>
+    </header>
+
+    <section class="tab active" id="tab-chat">
+      <div class="chat-log" id="chat-log"></div>
+      <div class="composer">
+        <div class="composer-in">
+          <textarea id="input" rows="1" dir="auto" placeholder="Describe your dream home, or ask me anything…" aria-label="Message"></textarea>
+          <button class="btn primary send" id="send" aria-label="Send"></button>
+        </div>
+        <div class="composer-hint">Enter to send · Shift+Enter for a new line</div>
+      </div>
+    </section>
+
+    <section class="tab" id="tab-explore"><div class="page"></div></section>
+    <section class="tab" id="tab-favorites"><div class="page"></div></section>
+    <section class="tab" id="tab-compare"><div class="page"></div></section>
+    <section class="tab" id="tab-viewings"><div class="page"></div></section>
+  </main>
+</div>
+
+<nav class="bottom-nav" id="bottom-nav"></nav>
+<div class="tray" id="tray"></div>
+<div id="modal-root"></div>
+<div id="toasts" aria-live="polite"></div>
+
+<script src="/static/app.js?v=3"></script>
+</body>
+</html>
